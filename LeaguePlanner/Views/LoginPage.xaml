@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:local="clr-namespace:LeaguePlanner.Triggers"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LeaguePlanner.Views.LoginPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:TriggersEntrys x:Key="Dislabled" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout>
+
+
+            <Button Image="{Binding Imagen}"  Command="{Binding RegisterUser}" BorderRadius="100" BorderColor="Black" IsVisible="True"  VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" />
+            <Entry Placeholder="Usuario" TextColor="White"  Text="{ Binding Username }" x:Name="UserName" >
+
+
+            </Entry>
+
+            <Entry Placeholder="Contraseña" TextColor="White" IsPassword="True" Text="{Binding Passworld}"  x:Name="PassWorld" />
+
+            <Button Text="Iniciar Sesion" 
+                    Font="defaut" 
+                    FontAttributes="Bold,Italic"
+                    BackgroundColor="OrangeRed" 
+                    BorderRadius="20" TextColor="White"  
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand"
+                    IsEnabled="False">
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference UserName}, 
+                                                            Path=Text.Length, 
+                                                            Converter ={StaticResource  Dislabled}}"
+                                                            Value ="true"
+                                                  />
+                            <BindingCondition Binding="{Binding Source={x:Reference PassWorld}, 
+                                                            Path=Text.Length, 
+                                                            Converter ={StaticResource  Dislabled}}"
+                                                            Value ="true"
+                                                  />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="Command" Value="{Binding BtnIngresar}"/>
+                        <Setter Property="BackgroundColor" Value="RoyalBlue"/>
+                        <Setter Property="IsEnabled" Value="true"/>
+                    </MultiTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <ActivityIndicator  IsRunning ="{Binding IsRunning}"  IsVisible="{Binding IsRunning}" VerticalOptions="CenterAndExpand"  Color="LightGreen" HorizontalOptions="Center"  />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

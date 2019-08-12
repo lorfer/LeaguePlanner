@@ -4,6 +4,7 @@ using LeaguePlanner.ViewModels;
 using LeaguePlanner.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Prism.Plugin.Popups;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace LeaguePlanner
@@ -28,8 +29,19 @@ namespace LeaguePlanner
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+
+            containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterUser, RegisterUserViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterUser>();
+
+            containerRegistry.RegisterForNavigation<RegisterPlayer, RegisterPlayerViewModel>();
+            containerRegistry.RegisterForNavigation<MenuMasterDetailPage, MenuMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<SettingPage, SettingPageViewModel>();
+            containerRegistry.RegisterForNavigation<AccountingPage, AccountingPageViewModel>();
+            containerRegistry.RegisterForNavigation<StatisticsPage, StatisticsPageViewModel>();
         }
     }
 }

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="LeaguePlanner.Views.RegisterPlayer"
+             Title="Pagina de Registro"
+             >
+
+    <StackLayout VerticalOptions="StartAndExpand">
+        <SearchBar VerticalOptions="Start" Placeholder="Busca un jugador"  SearchCommand="{Binding SearchCommand}" Text="{Binding SearchText}"/>
+
+        <Label Text="Loading data Players..."
+                       FontSize="Small" 
+                       IsVisible="{Binding IsRunning}"
+                       HorizontalOptions="Center"
+                       Margin="0, 10"
+                />
+
+        <ActivityIndicator 
+                    IsRunning="{Binding IsRunning}"
+                    Color="Black"
+                    IsVisible="{Binding IsRunning}"
+                    VerticalOptions="Center" />
+        <ScrollView>
+
+            <ListView ItemsSource="{Binding ListOfPlayer}" 
+                        CachingStrategy="RecycleElement" 
+                        SelectedItem="{Binding PlayerSelected}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <TextCell Text="{Binding ListOfPlayer.NickName} " 
+                                  Detail="{Binding ListOfPlayer.LastName}" ></TextCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+    </StackLayout>
+
+
+
+</ContentPage>
