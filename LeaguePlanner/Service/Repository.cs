@@ -3,67 +3,116 @@ using LeaguePlanner.Models;
 using Realms;
 using System.Collections.Generic;
 using System.Linq;
+using Realms.Exceptions;
+using System.Collections.ObjectModel;
 
 namespace LeaguePlanner.Service
 {
     class Repository
     {
-        public Repository()
-        {
-            //var instance = Realm.GetInstance();
-            //instance.CreateObject(User,)
-        }
+        Realm instance = Realm.GetInstance();
+
 
         public int AutoIncrement()
         {
-            var instance = Realm.GetInstance();
             int count = (int)instance.All<User>().ToList().Count;
             return count += 1;
         }
 
-     
+
         public List<User> GetUsers()
         {
-            var instance = Realm.GetInstance();
             var users = instance.All<User>().ToList();
             return users;
         }
 
-        public bool UserExist(User user)
+        public bool UserExist(User user, string type)
         {
-            foreach (var item in GetUsers())
+            switch (type)
             {
-                if (item.UserName == user.UserName)
-                {
-                    return true;
-                }
+                case "exist":
+                    foreach (var item in GetUsers())
+                    {
+                        if (item.UserName == user.UserName)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+
+                case "valid":
+                    foreach (var item in GetUsers())
+                    {
+                        if (item.UserName == user.UserName && item.PassWorld == user.PassWorld)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+
+
+                default:
+                    return false;
             }
-            return false;
+
 
         }
 
-        public bool UserExist(string userName, string passWorld)
-        {
-            foreach (var item in GetUsers())
-            {
-                if (item.UserName == userName && item.PassWorld == passWorld)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+
         public void InsertUser(User user)
         {
-            var instance = Realm.GetInstance();
+            try
+            {
+                instance.Write(() =>
+                {
 
-            instance.Write(() =>
+                    instance.Add(user);
+
+
+                });
+            }
+            catch (RealmException e)
             {
 
-                instance.Add(user);
+            }
+
+        }
 
 
-            });
+        public ObservableCollection<Player> GetPlayers()
+        {
+            try
+            {
+                var players = (ObservableCollection<Player>)instance.All<Player>();
+                return players;
+
+            }
+            catch (RealmException)
+            {
+
+                throw;
+            }
+
+
+
+        }
+        public void InsertPlayer(Player player)
+        {
+            try
+            {
+                instance.Write(() =>
+                {
+
+                    instance.Add(player);
+
+
+                });
+            }
+            catch (RealmException e)
+            {
+
+            }
+
         }
 
 

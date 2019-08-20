@@ -25,17 +25,14 @@ namespace LeaguePlanner.ViewModels
 
         private DelegateCommand commandAddPlayer;
         public DelegateCommand CommandAddPlayer =>
-            commandAddPlayer ?? (commandAddPlayer = new DelegateCommand(ExecuteCommandAddPlayer, CanExecuteCommandAddPlayer));
+            commandAddPlayer ?? (commandAddPlayer = new DelegateCommand(ExecuteCommandAddPlayer));
 
         async void ExecuteCommandAddPlayer()
         {
             await _navigationService.NavigateAsync("RegisterPlayer");
         }
 
-        bool CanExecuteCommandAddPlayer()
-        {
-            return IsNotRunning;
-        }
+        
 
         private DelegateCommand searchCommand;
         public DelegateCommand SearchCommand =>

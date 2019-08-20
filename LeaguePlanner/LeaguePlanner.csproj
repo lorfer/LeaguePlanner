@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Prism.Plugin.Popups" Version="7.2.0.573" />
     <PackageReference Include="Realm" Version="4.1.0" />
+    <PackageReference Include="Realm.Database" Version="3.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.673156" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.2.0.1367" />
   </ItemGroup>

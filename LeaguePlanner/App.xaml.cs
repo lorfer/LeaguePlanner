@@ -5,6 +5,7 @@ using LeaguePlanner.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.Plugin.Popups;
+using Rg.Plugins.Popup;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace LeaguePlanner
@@ -19,13 +20,15 @@ namespace LeaguePlanner
         public App() : this(null) { }
 
         public App(IPlatformInitializer initializer) : base(initializer) { }
-
+       
         protected override async void OnInitialized()
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("LoginPage");
         }
+
+       
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
@@ -43,5 +46,8 @@ namespace LeaguePlanner
             containerRegistry.RegisterForNavigation<AccountingPage, AccountingPageViewModel>();
             containerRegistry.RegisterForNavigation<StatisticsPage, StatisticsPageViewModel>();
         }
+     
     }
+
+    
 }

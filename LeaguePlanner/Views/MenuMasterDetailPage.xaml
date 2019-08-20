@@ -6,13 +6,22 @@
                   prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="LeaguePlanner.Views.MenuMasterDetailPage">
 
-    <MasterDetailPage.Master>
 
+    <MasterDetailPage.Detail>
+        <ContentPage Title="Master">
+            <StackLayout VerticalOptions="Center">
+                <Image Source="LeaguePlanerLogo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="150" WidthRequest="150"/>
+            </StackLayout>
+        </ContentPage>
+        
+
+    </MasterDetailPage.Detail>
+    <MasterDetailPage.Master>
         <NavigationPage Title="Menu">
             <x:Arguments>
                 <ContentPage Title="Menu Principal" >
 
-                    <ListView ItemsSource="{Binding ItemsMenu}" SelectedItem="{Binding SelectedMenuItem }"
+                    <ListView ItemsSource="{Binding MenusItems}" SelectedItem="{Binding SelectedMenuItem}"
                               RowHeight="60" 
                               SeparatorColor="#C7EDE6"  
                               >
@@ -51,5 +60,7 @@
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Master>
+
+           
 
 </MasterDetailPage>

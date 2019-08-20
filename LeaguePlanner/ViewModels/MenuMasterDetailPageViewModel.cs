@@ -12,14 +12,14 @@ namespace LeaguePlanner.ViewModels
     {
         INavigationService _navigationService;
 
-        public ObservableCollection<ItemsMenu> ItemsMenu { get; set; }
+        public ObservableCollection<ItemsMenu> MenusItems { get; set; }
         public DelegateCommand NavigationCommand { get; private set; }
         public MenuMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
 
             _navigationService = navigationService;
-            ItemsMenu = new ObservableCollection<ItemsMenu>();
-            // GetMenu();
+            MenusItems = new ObservableCollection<ItemsMenu>();
+            GetMenu();
             NavigationCommand = new DelegateCommand(Navigate);
         }
 
@@ -41,27 +41,27 @@ namespace LeaguePlanner.ViewModels
         public void GetMenu()
         {
 
-            ItemsMenu.Add(new ItemsMenu
+            MenusItems.Add(new ItemsMenu
             {
-                Icon = "Player.png",
+                Icon = "Entrenador.png",
                 Title = "Jugadores",
                 PageName = "RegisterPlayer"
             });
 
-            ItemsMenu.Add(new ItemsMenu
-            {
-                Icon = "Statitics.Png",
-                Title = "Estadisticas",
-                PageName = "MainPage"
-            });
-            ItemsMenu.Add(new ItemsMenu
+            MenusItems.Add(new ItemsMenu
             {
                 Icon = "PayMoney.Png",
-                Title = "Mensualidades",
-                PageName = "AccountingPageViewModel"
+                Title = "Pago Mensualidades",
+                PageName = "AccountingPage"
+            });
+            MenusItems.Add(new ItemsMenu
+            {
+                Icon = "Statistics.Png",
+                Title = "Estadisticas",
+                PageName = "StatisticsPage"
             });
 
-            ItemsMenu.Add(new ItemsMenu
+            MenusItems.Add(new ItemsMenu
             {
                 Icon = "SettingIcon.Png",
                 Title = "Configuracion",

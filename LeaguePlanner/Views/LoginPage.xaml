@@ -13,25 +13,23 @@
     </ContentPage.Resources>
 
     <ScrollView>
-        <StackLayout>
+        <StackLayout VerticalOptions="Center">
 
 
-            <Button Image="{Binding Imagen}"  Command="{Binding RegisterUser}" BorderRadius="100" BorderColor="Black" IsVisible="True"  VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" />
-            <Entry Placeholder="Usuario" TextColor="White"  Text="{ Binding Username }" x:Name="UserName" >
+            <Button Image="{Binding Imagen}"  Command="{Binding RegisterUser}" IsVisible="True"  VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="180" WidthRequest="180" />
+            <!--<Image Source="LeaguePlanerLogo.png" Aspect="AspectFit" HeightRequest="150" WidthRequest="150"/>-->
+            <Entry Placeholder="Usuario" TextColor="Black"  Text="{ Binding UserName }" x:Name="UserName" >
 
 
             </Entry>
 
-            <Entry Placeholder="Contraseña" TextColor="White" IsPassword="True" Text="{Binding Passworld}"  x:Name="PassWorld" />
+            <Entry Placeholder="Contraseña" TextColor="Black" IsPassword="True" Text="{Binding PassWorld}"  x:Name="PassWorld" />
 
             <Button Text="Iniciar Sesion" 
-                    Font="defaut" 
-                    FontAttributes="Bold,Italic"
-                    BackgroundColor="OrangeRed" 
-                    BorderRadius="20" TextColor="White"  
+                    BorderWidth="10"
                     HorizontalOptions="CenterAndExpand" 
-                    VerticalOptions="CenterAndExpand"
-                    IsEnabled="False">
+                    VerticalOptions="Fill"
+                    IsEnabled="False"  FontSize="Default"  BackgroundColor="#DA3131" TextColor="#000000" FlowDirection="RightToLeft">
                 <Button.Triggers>
                     <MultiTrigger TargetType="Button">
                         <MultiTrigger.Conditions>
@@ -53,7 +51,7 @@
                 </Button.Triggers>
             </Button>
 
-            <ActivityIndicator  IsRunning ="{Binding IsRunning}"  IsVisible="{Binding IsRunning}" VerticalOptions="CenterAndExpand"  Color="LightGreen" HorizontalOptions="Center"  />
+            <ActivityIndicator  IsRunning ="{Binding IsRunning}"  IsVisible="{Binding IsRunning}" VerticalOptions="Fill"  Color="LightGreen" HorizontalOptions="Center"  />
 
         </StackLayout>
     </ScrollView>

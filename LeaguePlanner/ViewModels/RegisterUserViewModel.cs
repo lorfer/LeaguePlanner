@@ -14,6 +14,7 @@ namespace LeaguePlanner.ViewModels
 {
     public class RegisterUserViewModel : ViewModelBase
     {
+
         public RegisterUserViewModel(INavigationService navigation) : base(navigation)
         {
             Title = "Registra usuario";
@@ -86,7 +87,7 @@ namespace LeaguePlanner.ViewModels
         async void ExecuteRegisterUserCommandAsync()
         {
 
-            if (Persistence.UserExist(user))
+            if (Persistence.UserExist(user, "exist"))
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Disculpa", $"El Usuario {username} ya esta guardado.", "Ok");
@@ -97,13 +98,13 @@ namespace LeaguePlanner.ViewModels
                 user.Id += (int)Persistence.GetUsers().Count + 1;
                 Persistence.InsertUser(user);
 
-                var message = await Application.Current.MainPage.DisplayAlert("Aviso", "Su Usuario se a guardado Correctamente, ¿Deseas iniciar?", "Si", "No");
+                var message = await Application.Current.MainPage.DisplayAlert("Aviso", "Su Usuario se a guardado Correctamente, ¿Quieres regresar?", "Si", "No");
 
                 if (message)
                 {
                     var p = new NavigationParameters();
                     p.Add("Model", user);
-                    await NavigationService.NavigateAsync("HomePageViewModel", p);
+                    await NavigationService.NavigateAsync("LoginPage", p);
                 }
 
 
@@ -112,7 +113,6 @@ namespace LeaguePlanner.ViewModels
             }
 
         }
-
 
     }
 }

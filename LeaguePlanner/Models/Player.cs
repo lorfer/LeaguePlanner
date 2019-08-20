@@ -5,6 +5,7 @@ namespace LeaguePlanner.Models
 {
     public class Player:RealmObject
     {
+        [PrimaryKey]
         public int Id{ get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }

@@ -13,10 +13,12 @@ namespace LeaguePlanner.ViewModels
         private int count = 0;
         private User user = new User();
         readonly Repository repo = new Repository();
+        private readonly INavigationService _navigationService;
 
-        public LoginPageViewModel(INavigationService navigation) : base(navigation)
+        public LoginPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Imagen = "Entrenador.jpeg";
+            _navigationService = navigationService;
+            Imagen = "LeaguePlanerLogo.png";
         }
 
 
@@ -33,7 +35,7 @@ namespace LeaguePlanner.ViewModels
                 {
                     var p = new NavigationParameters();
                     p.Add("Model", p);
-                    await NavigationService.NavigateAsync("RegistPage");
+                    await NavigationService.NavigateAsync("RegisterUser");
                 }
 
                 count = 0;
@@ -49,15 +51,17 @@ namespace LeaguePlanner.ViewModels
         async void ExecuteCommandButton()
         {
             IsRunning = true;
-            bool exist = repo.UserExist(user.UserName, user.PassWorld);
+            bool exist = repo.UserExist(user,"valid");
 
             if (exist)
             {
-                await NavigationService.NavigateAsync("HomePage");
+                await _navigationService.NavigateAsync("MenuMasterDetailPage");
             }
-            user = null;
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error!", "El Usuario o la Contraseña son incorrecta", "Reintentar");
+            }
             IsRunning = false;
-
         }
 
         private string userName;
