@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="LeaguePlanner.Views.AccountingPage">
+             x:Class="LeaguePlanner.Views.AccountingPage"
+             Title="{Binding Title}">
+    <StackLayout Orientation="Vertical">
+        <Label Text="Pagos" FontSize="Header"></Label>
+    </StackLayout>
   
 </ContentPage>

@@ -4,26 +4,17 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="LeaguePlanner.Views.MenuMasterDetailPage">
+             x:Class="LeaguePlanner.Views.MenuMasterDetailPage"
+                 >
 
 
-    <MasterDetailPage.Detail>
-        <ContentPage Title="Master">
-            <StackLayout VerticalOptions="Center">
-                <Image Source="LeaguePlanerLogo.png" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit" HeightRequest="150" WidthRequest="150"/>
-            </StackLayout>
-        </ContentPage>
-        
-
-    </MasterDetailPage.Detail>
     <MasterDetailPage.Master>
-        <NavigationPage Title="Menu">
+        <NavigationPage  BarTextColor="Black" Title=".">
             <x:Arguments>
-                <ContentPage Title="Menu Principal" >
-
+                <ContentPage Title="Menu Principal">
                     <ListView ItemsSource="{Binding MenusItems}" SelectedItem="{Binding SelectedMenuItem}"
                               RowHeight="60" 
-                              SeparatorColor="#C7EDE6"  
+                              SeparatorColor="#C7EDE6"                              
                               >
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -45,22 +36,28 @@
                                                VerticalOptions="Center"
                                                TextColor="Black"/>
                                     </StackLayout>
-
                                 </ViewCell>
+
+
+
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.Behaviors>
-                            <b:EventToCommandBehavior EventName="ItemTapped" 
+                            <b:EventToCommandBehavior x:Name="open" EventName="ItemTapped" 
                                                       Command="{Binding NavigationCommand}"/>
 
                         </ListView.Behaviors>
-                    </ListView>
 
+                    </ListView>
+                    <!--<Image Source="EmpresaLogo.png" HorizontalOptions="End" VerticalOptions="End"  WidthRequest="120" HeightRequest="120"/>-->
                 </ContentPage>
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Master>
 
+    <MasterDetailPage.Detail>
+        <ContentPage ></ContentPage>
+    </MasterDetailPage.Detail>
            
 
 </MasterDetailPage>

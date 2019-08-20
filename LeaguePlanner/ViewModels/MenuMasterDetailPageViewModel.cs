@@ -16,7 +16,7 @@ namespace LeaguePlanner.ViewModels
         public DelegateCommand NavigationCommand { get; private set; }
         public MenuMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-
+            Title = "Menu";
             _navigationService = navigationService;
             MenusItems = new ObservableCollection<ItemsMenu>();
             GetMenu();
@@ -34,7 +34,7 @@ namespace LeaguePlanner.ViewModels
         async void Navigate()
         {
 
-            await _navigationService.NavigateAsync(nameof(NavigationPage) + "/ " + SelectedMenuItem.PageName);
+            await _navigationService.NavigateAsync(nameof(NavigationPage) + "/ " + selectedMenuItem.PageName);
 
         }
 
@@ -65,8 +65,17 @@ namespace LeaguePlanner.ViewModels
             {
                 Icon = "SettingIcon.Png",
                 Title = "Configuracion",
-                PageName = "SettingIcon"
+                PageName = "SettingPage"
             });
+
+            MenusItems.Add(new ItemsMenu
+            {
+                Icon = "Marcador.png",
+                Title = "Marcador",
+                PageName = "MarcadorPage"
+            });
+
+
 
 
         }
