@@ -1,5 +1,7 @@
 ﻿using LeaguePlanner.Models;
+using LeaguePlanner.Views;
 using Prism.Commands;
+using Prism.Mvvm;
 using Prism.Navigation;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -10,17 +12,16 @@ namespace LeaguePlanner.ViewModels
 
     public class MenuMasterDetailPageViewModel : ViewModelBase
     {
-        INavigationService _navigationService;
+        private INavigationService _navigationService;
 
-        public ObservableCollection<ItemsMenu> MenusItems { get; set; }
-        public DelegateCommand NavigationCommand { get; private set; }
-        public MenuMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
+        public ObservableCollection<ItemsMenu> MenuItems { get; set; }
+        public DelegateCommand NavigateCommand { get; private set; }
+        public MenuMasterDetailPageViewModel(INavigationService navigationService):base(navigationService)
         {
-            Title = "Menu";
             _navigationService = navigationService;
-            MenusItems = new ObservableCollection<ItemsMenu>();
+            MenuItems = new ObservableCollection<ItemsMenu>();
             GetMenu();
-            NavigationCommand = new DelegateCommand(Navigate);
+            NavigateCommand = new DelegateCommand(Navigate);
         }
 
         private ItemsMenu selectedMenuItem;
@@ -33,42 +34,42 @@ namespace LeaguePlanner.ViewModels
 
         async void Navigate()
         {
-
-            await _navigationService.NavigateAsync(nameof(NavigationPage) + "/ " + selectedMenuItem.PageName);
+          //  await NavigationService.NavigateAsync(nameof(MenuMasterDetailPage) + "/" + nameof(NavigationPage) + "/" + SelectedMenuItem.PageName);
+          await _navigationService.NavigateAsync(nameof(NavigationPage) + "/" + SelectedMenuItem.PageName);
 
         }
 
         public void GetMenu()
         {
-
-            MenusItems.Add(new ItemsMenu
+          
+            MenuItems.Add(new ItemsMenu
             {
                 Icon = "Entrenador.png",
                 Title = "Jugadores",
                 PageName = "RegisterPlayer"
             });
 
-            MenusItems.Add(new ItemsMenu
+            MenuItems.Add(new ItemsMenu
             {
                 Icon = "PayMoney.Png",
                 Title = "Pago Mensualidades",
-                PageName = "AccountingPage"
+                PageName = "MainPage"
             });
-            MenusItems.Add(new ItemsMenu
+            MenuItems.Add(new ItemsMenu
             {
                 Icon = "Statistics.Png",
                 Title = "Estadisticas",
                 PageName = "StatisticsPage"
             });
 
-            MenusItems.Add(new ItemsMenu
+            MenuItems.Add(new ItemsMenu
             {
                 Icon = "SettingIcon.Png",
                 Title = "Configuracion",
                 PageName = "SettingPage"
             });
 
-            MenusItems.Add(new ItemsMenu
+            MenuItems.Add(new ItemsMenu
             {
                 Icon = "Marcador.png",
                 Title = "Marcador",

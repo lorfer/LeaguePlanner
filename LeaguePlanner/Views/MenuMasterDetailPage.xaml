@@ -2,26 +2,34 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                   x:Class="LeaguePlanner.Views.MenuMasterDetailPage"
                   xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="LeaguePlanner.Views.MenuMasterDetailPage"
                  >
 
 
+
     <MasterDetailPage.Master>
-        <NavigationPage  BarTextColor="Black" Title=".">
-            <x:Arguments>
+        <NavigationPage Title="Lorfe" BarBackgroundColor="Black">
+            <x:Arguments >
+
                 <ContentPage Title="Menu Principal">
-                    <ListView ItemsSource="{Binding MenusItems}" SelectedItem="{Binding SelectedMenuItem}"
+
+                    <ListView ItemsSource="{Binding MenuItems}" 
+                              SelectedItem="{Binding SelectedMenuItem}"
                               RowHeight="60" 
-                              SeparatorColor="#C7EDE6"                              
+                              SeparatorColor="#C7EDE6" 
+                              SeparatorVisibility="Default"
+                              VerticalOptions="FillAndExpand"
+                            
                               >
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell >
+                                <ViewCell>
 
-                                    <StackLayout VerticalOptions="Start"
+                                    <StackLayout VerticalOptions="CenterAndExpand"
                                                  Orientation="Horizontal"
+                                                 
                                                  Padding="20,10,0,10"
                                                  Spacing="20"
                                                  >
@@ -43,21 +51,39 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                         <ListView.Behaviors>
-                            <b:EventToCommandBehavior x:Name="open" EventName="ItemTapped" 
-                                                      Command="{Binding NavigationCommand}"/>
+                            <b:EventToCommandBehavior EventName="ItemTapped" 
+                                                      Command="{Binding NavigateCommand}"/>
 
                         </ListView.Behaviors>
 
                     </ListView>
-                    <!--<Image Source="EmpresaLogo.png" HorizontalOptions="End" VerticalOptions="End"  WidthRequest="120" HeightRequest="120"/>-->
+
                 </ContentPage>
+                <!--<Image Source="EmpresaLogo.png" VerticalOptions="End" HeightRequest="80" WidthRequest="80" IsVisible="{Binding IsPresentedAfterNavigation}"/>-->
+
+
             </x:Arguments>
         </NavigationPage>
+        
     </MasterDetailPage.Master>
 
+
     <MasterDetailPage.Detail>
-        <ContentPage ></ContentPage>
+        <NavigationPage BarBackgroundColor="Black" Title="Menu              Bienvenido: ">
+
+            <x:Arguments>
+                <ContentPage Title="Menu">
+                </ContentPage>
+              
+            </x:Arguments>
+                     
+            
+            
+
+        
+        </NavigationPage>
+        
+       
     </MasterDetailPage.Detail>
-           
 
 </MasterDetailPage>

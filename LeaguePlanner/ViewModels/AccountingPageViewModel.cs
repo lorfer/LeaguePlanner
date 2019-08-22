@@ -14,7 +14,7 @@ namespace LeaguePlanner.ViewModels
         public AccountingPageViewModel(INavigationService navigationService ):base(navigationService)
         {
             _navigationService = navigationService;
-            Title = "Pagos";
+            
             
         }
 

@@ -11,7 +11,7 @@
         <SearchBar VerticalOptions="Start" Placeholder="Busca un jugador"  SearchCommand="{Binding SearchCommand}" Text="{Binding SearchText}"/>
 
         <Label Text="Loading data Players..."
-                       FontSize="Small" 
+                       FontSize="Header" 
                        IsVisible="True"
                        HorizontalOptions="Center"
                        Margin="0, 10"

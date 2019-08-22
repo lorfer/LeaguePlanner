@@ -32,7 +32,7 @@ namespace LeaguePlanner.ViewModels
             await _navigationService.NavigateAsync("RegisterPlayer");
         }
 
-        
+
 
         private DelegateCommand searchCommand;
         public DelegateCommand SearchCommand =>
@@ -97,52 +97,53 @@ namespace LeaguePlanner.ViewModels
         }
 
 
-        //public ObservableCollection<Player> Testers()
-        //{
-        //    return new ObservableCollection<Player>
-        //    {
-        //        new Player{
-        //            Id = 1,
-        //            Name = "Estarlin",
-        //            LastName = "Martinez",
-        //            NickName = "PicÃº",
-        //            Heith = (float)5.5,
-        //             Weith = (float)4.5,
+        public ObservableCollection<Player> Testers()
+        {
+            return new ObservableCollection<Player>
+            {
+                new Player{
+                    Id = 1,
+                    Name = "Estarlin",
+                    LastName = "Martinez",
+                    NickName = "PicÃº",
+                    Heith = (float)5.5,
+                     Weith = (float)4.5,
 
 
-        //        },
-        //        new Player{
-        //            Id = 1,
-        //            Name = "Fernando",
-        //            LastName = "Garcia",
-        //            NickName = "Lorfe",
-        //            Heith = (float)5.5,
-        //             Weith = (float)4.5,
+                },
+                new Player{
+                    Id = 1,
+                    Name = "Fernando",
+                    LastName = "Garcia",
+                    NickName = "Lorfe",
+                    Heith = (float)5.5,
+                     Weith = (float)4.5,
 
 
-        //        },
-        //        new Player{
-        //            Id = 2,
-        //            Name = "Estarlin",
-        //            LastName = "Martinez",
-        //            NickName = "PicÃº",
-        //            Heith = (float)5.5,
-        //             Weith = (float)4.5,
+                },
+                new Player{
+                    Id = 2,
+                    Name = "Estarlin",
+                    LastName = "Martinez",
+                    NickName = "PicÃº",
+                    Heith = (float)5.5,
+                     Weith = (float)4.5,
 
 
-        //        },
-        //        new Player{
-        //            Id = 3,
-        //            Name = "Jose",
-        //            LastName = "Miguel",
-        //            NickName = "Blade",
-        //            Heith = (float)5.5,
-        //             Weith = (float)4.5,
+                },
+                new Player{
+                    Id = 3,
+                    Name = "Jose",
+                    LastName = "Miguel",
+                    NickName = "Blade",
+                    Heith = (float)5.5,
+                     Weith = (float)4.5,
 
 
-        //        },
+                },
 
-        //    };
+            };
 
+        }
     }
 }

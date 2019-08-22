@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LeaguePlanner.ViewModels
 {
-        public class ViewModelBase : BindableBase, INavigationAware, IDestructible, IMasterDetailPageOptions
+        public class ViewModelBase : BindableBase, INavigationAware, IDestructible,IMasterDetailPageOptions
         {
             protected INavigationService NavigationService { get; private set; }
 

@@ -4,9 +4,12 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="LeaguePlanner.Views.AccountingPage"
-             Title="{Binding Title}">
-    <StackLayout Orientation="Vertical">
-        <Label Text="Pagos" FontSize="Header"></Label>
-    </StackLayout>
+             Title="Pagos"
+             >
+    <ContentPage.Content>
+        
+    <Label Text="Pagos" FontSize="Header"  VerticalOptions="Center" HorizontalOptions="Center"></Label>
+   
   
+    </ContentPage.Content>
 </ContentPage>
