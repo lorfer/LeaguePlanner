@@ -112,7 +112,7 @@ namespace LeaguePlanner.ViewModels
 
                 },
                 new Player{
-                    Id = 1,
+                    Id = 2,
                     Name = "Fernando",
                     LastName = "Garcia",
                     NickName = "Lorfe",
@@ -122,7 +122,7 @@ namespace LeaguePlanner.ViewModels
 
                 },
                 new Player{
-                    Id = 2,
+                    Id = 3,
                     Name = "Estarlin",
                     LastName = "Martinez",
                     NickName = "PicÃº",
@@ -132,7 +132,7 @@ namespace LeaguePlanner.ViewModels
 
                 },
                 new Player{
-                    Id = 3,
+                    Id = 4,
                     Name = "Jose",
                     LastName = "Miguel",
                     NickName = "Blade",

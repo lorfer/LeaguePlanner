@@ -5,11 +5,13 @@
                    x:Class="LeaguePlanner.Views.MenuMasterDetailPage"
                   xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
+                  
                  >
 
 
 
     <MasterDetailPage.Master>
+        
         <NavigationPage Title="Lorfe" BarBackgroundColor="Black">
             <x:Arguments >
 
@@ -69,7 +71,7 @@
 
 
     <MasterDetailPage.Detail>
-        <NavigationPage BarBackgroundColor="Black" Title="Menu              Bienvenido: ">
+        <NavigationPage BarBackgroundColor="Black" Title="Menu              Bienvenido: " >
 
             <x:Arguments>
                 <ContentPage Title="Menu">

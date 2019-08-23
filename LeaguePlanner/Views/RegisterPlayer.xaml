@@ -5,39 +5,53 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="LeaguePlanner.Views.RegisterPlayer"
              Title="Pagina de Registro"
+             
              >
-
-    <StackLayout Margin="60">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar" Order="Primary" Icon="addUser.png" />
+        <ToolbarItem Text="Agregar" Order="Primary" Icon="DeleteUser.png"/>
+        <ToolbarItem Text="Agregar" Order="Primary" Icon="editUser.png"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout >
         <SearchBar VerticalOptions="Start" Placeholder="Busca un jugador"  SearchCommand="{Binding SearchCommand}" Text="{Binding SearchText}"/>
 
         <Label Text="Loading data Players..."
-                       FontSize="Header" 
+                       FontSize="Caption" 
                        IsVisible="True"
                        HorizontalOptions="Center"
                        Margin="0, 10"
                 />
 
         <ActivityIndicator 
-                    IsRunning="{Binding IsRunning}"
+                    IsRunning="True"
                     Color="Black"
-                    IsVisible="{Binding IsRunning}"
+                    IsVisible="True"
                     VerticalOptions="Center" />
         <ScrollView>
 
-            <ListView ItemsSource="{Binding ListOfPlayer}" 
-                        CachingStrategy="RecycleElement" 
-                        SelectedItem="{Binding PlayerSelected}">
-                <ListView.ItemTemplate>
+            <CollectionView ItemsSource="{Binding ListOfPlayer}" 
+                            
+                        SelectedItem="{Binding PlayerSelected}"
+                       SelectionMode="Multiple" 
+                      
+                      >
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
 
-                        <TextCell Text="{Binding ListOfPlayer.NickName} " 
-                                  Detail="{Binding ListOfPlayer.LastName}" ></TextCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding ListOfPlayer.NickName}"></Label>
+                                <Label Text="{Binding ListOfPlayer.LastName}"></Label>
+                            </StackLayout>
+                            
+                        </ViewCell> <!--Text="{Binding ListOfPlayer.NickName} " 
+                                  Detail="{Binding ListOfPlayer.LastName}"
+                                  />-->
 
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </ScrollView>
-
     </StackLayout>
 
 
